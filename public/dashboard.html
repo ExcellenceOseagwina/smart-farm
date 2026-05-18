@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartFarm | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 1. Supabase Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="logo"><h2>SmartFarm 🌱</h2></div>
+        <div class="user-profile">
+            <span>Welcome, <span id="display-name" class="user-name">Farmer</span></span>
+            <!-- The Logout Button: Calling the logout() function -->
+            <button onclick="logout()" style="width: auto; padding: 8px 15px; background: #ff7675; margin-left:15px; border:none; border-radius:8px; color:white; cursor:pointer;">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="grid">
+            
+            <!-- Input Card -->
+            <div class="card">
+                <h3>Input Environmental Data</h3>
+                
+                <label for="moisture">Soil Moisture (%)</label>
+                <input type="number" id="moisture" placeholder="e.g. 20" min="0" max="100">
+                
+                <label for="temp">Temperature (°C)</label>
+                <input type="number" id="temp" placeholder="e.g. 30">
+                
+                <label for="humidity">Humidity (%)</label>
+                <input type="number" id="humidity" placeholder="e.g. 50">
+                
+                <!-- The Analyze Button: Calling runAnalysis() -->
+                <button onclick="runAnalysis()">Analyze Conditions</button>
+            </div>
+
+            <!-- Current Result Card -->
+            <div class="card">
+                <h3>Current System Status</h3>
+                <!-- ID matches result display in app.js -->
+                <div id="status-out" class="status-box">Awaiting data...</div>
+                
+                <p style="margin-top:20px;"><strong>💡 Recommendation:</strong></p>
+                <!-- ID matches result display in app.js -->
+                <p id="rec-out" style="color: #636e72; margin-top: 5px;">--</p>
+            </div>
+
+        </div>
+
+        <!-- Monitoring History Section -->
+        <div class="card history-section">
+            <h3>Monitoring History</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Moisture</th>
+                            <th>Temp</th>
+                            <th>Humidity</th>
+                            <th>System Status</th>
+                        </tr>
+                    </thead>
+                    <!-- ID matches the table body in app.js -->
+                    <tbody id="history-body">
+                        <!-- History rows will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- CRITICAL: Script order is vital -->
+    <!-- 1. Your Supabase Keys -->
+    <script src="config.js"></script>
+    <!-- 2. Your Main Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

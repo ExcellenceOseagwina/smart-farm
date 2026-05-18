@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Setup Farm</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="card" style="max-width: 500px; margin: 100px auto;">
+        <h2>🌱 One-Time Farm Setup</h2>
+        <p>Tell us about your farm to continue.</p>
+        <input type="text" id="farm-name" placeholder="Farm Name (e.g. Green Valley)">
+        <input type="text" id="farm-loc" placeholder="Location">
+        <input type="text" id="farm-size" placeholder="Size (Acres)">
+        <button onclick="saveFarm()">Start Monitoring</button>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        window.onload = async () => {
+            const user = await checkUser();
+            // Check if farm already exists
+            const { data } = await _supabase.from('farms').select('*').eq('user_id', user.id).single();
+            if (data) window.location.href = 'dashboard.html';
+        };
+
+        async function saveFarm() {
+            const user = await checkUser();
+            const { error } = await _supabase.from('farms').insert([{
+                user_id: user.id,
+                farm_name: document.getElementById('farm-name').value,
+                location: document.getElementById('farm-loc').value,
+                land_size: document.getElementById('farm-size').value
+            }]);
+            if (error) alert(error.message);
+            else window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>

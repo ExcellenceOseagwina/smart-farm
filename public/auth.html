@@ -1,0 +1,45 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartFarm | Access</title>
+    
+    <!-- THIS LINE LINKS THE CSS -->
+    <link rel="stylesheet" href="style.css"> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h1>SmartFarm 🌱</h1>
+        
+        <!-- Login Form -->
+        <div id="login-box">
+            <p>Sign in to monitor your crops</p>
+            <input type="email" id="login-email" placeholder="Email Address">
+            <input type="password" id="login-pass" placeholder="Password">
+            <button onclick="handleLogin()">Login</button>
+
+            <p style="margin-top:15px; font-size:0.85rem">
+                <a href="forgot-password.html" style="color:var(--primary); text-decoration:none;">Forgot Password?</a>
+            </p>
+        
+            <p style="margin-top:20px; font-size:0.9rem">New? <a href="#" onclick="toggleAuth()" style="color:var(--primary)">Create Account</a></p>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-box" class="hidden">
+            <p>Join the future of farming</p>
+            <input type="text" id="reg-name" placeholder="Full Name">
+            <input type="email" id="reg-email" placeholder="Email Address">
+            <input type="password" id="reg-pass" placeholder="Password">
+            <button onclick="handleSignup()">Register</button>
+            <p style="margin-top:20px; font-size:0.9rem">Back to <a href="#" onclick="toggleAuth()" style="color:var(--primary)">Login</a></p> 
+        </div>
+    </div>
+</div>
+<script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
