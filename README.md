@@ -26,7 +26,7 @@ SmartFarm is a web-based decision support system for farmers. It lets users log 
 
 ---
 
-## Project Structure
+## Look At The Project Structure
 
 ```
 .
@@ -47,7 +47,7 @@ SmartFarm is a web-based decision support system for farmers. It lets users log 
 
 ---
 
-## Getting Started
+## Let's Getting Started
 
 ### 1. Prerequisites
 
@@ -79,7 +79,7 @@ const SB_URL = "https://your-project.supabase.co";
 const SB_KEY = "your-publishable-anon-key";
 ```
 
-### 4. Set up the database
+### 4. Setting up the database
 
 In your Supabase project, create the following tables:
 
@@ -106,7 +106,7 @@ In your Supabase project, create the following tables:
 
 Enable **Row Level Security (RLS)** on both tables and add policies so users can only read/write their own rows (`user_id = auth.uid()`).
 
-### 5. Run the server
+### 5. Running the server
 
 ```bash
 npm start
@@ -120,11 +120,11 @@ The app will be available at `http://localhost:3000`.
 
 ## How the Fuzzy Logic Works
 
-Each input (moisture, temperature, humidity) is compared against overlapping ranges (e.g. *Low: 15–40*, *Medium: 30–65*), so a reading can fall into more than one band. When that happens, the engine picks the band whose midpoint is closest to the actual reading, breaking ties in favor of the more "critical" band. The three resulting classifications are then combined into a single, plain-language status message and recommendation, which is saved to the user's history.
+Each of the input (moisture, temperature, humidity) is compared against overlapping ranges (e.g. *Low: 15–40*, *Medium: 30–65*), so a reading can fall into more than one band. When that happens, the engine picks the band whose midpoint is closest to the actual reading, breaking ties in favor of the more "critical" band. The three resulting classifications are then combined into a single, plain-language status message and recommendation, which is saved to the user's history.
 
 ---
 
-## API
+## The API
 
 ### `POST /api/analyze`
 
